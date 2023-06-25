@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cb85c72105b0410fa3fca8d9e46e0702" Name="Diagram1">
+        <EntityTypeShape EntityType="ProyectoPrograAvanzadaModel.role" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoPrograAvanzadaModel.users" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="ProyectoPrograAvanzadaModel.FK_Role" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProyectoPrograAvanzadaModel.LogData" Width="1.5" PointX="5.25" PointY="1.25" />
+        <AssociationConnector Association="ProyectoPrograAvanzadaModel.FK__LogData__IdUsuar__4BAC3F29" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
