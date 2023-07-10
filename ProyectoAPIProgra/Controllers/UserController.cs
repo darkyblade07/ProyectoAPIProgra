@@ -29,9 +29,24 @@ namespace ProyectoAPIProgra.Controllers
             using (var bd = new ProyectoPrograAvanzadaEntities())
             {
 
-                return bd.RegistrarUsuario(entidad.Email, entidad.Password, entidad.Name);
+                var newUser = new users
+                {
+                    Name = entidad.Name,
+                    Email = entidad.Email,
+                    Username = entidad.Username,
+                    Password = entidad.Password,
+                    Role_ID = 2,
+                    State = true
+                };
+
+                bd.users.Add(newUser);
+                bd.SaveChanges();
+
+                return newUser.ID;
             }
+            //return bd.RegistrarUsuario(entidad.Email, entidad.Password, entidad.Name); 
+        }
         }
         }
 
-    }
+    
