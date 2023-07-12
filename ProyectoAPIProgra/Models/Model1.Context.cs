@@ -31,17 +31,17 @@ namespace ProyectoAPIProgra.Models
         public virtual DbSet<users> users { get; set; }
         public virtual DbSet<LogData> LogData { get; set; }
     
-        public virtual ObjectResult<IniciarSesion_Result> IniciarSesion(string password, string email)
+        public virtual ObjectResult<IniciarSesion_Result> IniciarSesion(string password, string username)
         {
             var passwordParameter = password != null ?
                 new ObjectParameter("Password", password) :
                 new ObjectParameter("Password", typeof(string));
     
-            var emailParameter = email != null ?
-                new ObjectParameter("Email", email) :
-                new ObjectParameter("Email", typeof(string));
+            var usernameParameter = username != null ?
+                new ObjectParameter("Username", username) :
+                new ObjectParameter("Username", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<IniciarSesion_Result>("IniciarSesion", passwordParameter, emailParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<IniciarSesion_Result>("IniciarSesion", passwordParameter, usernameParameter);
         }
     
         public virtual int RegistrarUsuario(string correoElectronico, string contrasenna, string nombre)

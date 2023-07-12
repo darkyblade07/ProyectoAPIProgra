@@ -13,13 +13,31 @@ namespace ProyectoAPIProgra.Controllers
     {
         [HttpPost]
         [Route("api/IniciarSesion")]
-        public IniciarSesion_Result IniciarSesion(UserEnt entidad)
+       
+        public UserEnt IniciarSesion(UserEnt entidad)
         {
             using (var bd = new ProyectoPrograAvanzadaEntities())
             {
-                return bd.IniciarSesion(entidad.Email, entidad.Password).FirstOrDefault();
+                var user = bd.users.FirstOrDefault(u => u.Username == entidad.Username && u.Password == entidad.Password);
+
+                if (user != null)
+                {
+                    var userEnt = new UserEnt
+                    {
+                        Username = user.Username,
+                        Password = user.Password,
+                    };
+
+                    return userEnt;
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
+
+
 
 
         [HttpPost]
@@ -35,7 +53,7 @@ namespace ProyectoAPIProgra.Controllers
                     Email = entidad.Email,
                     Username = entidad.Username,
                     Password = entidad.Password,
-                    Role_ID = 2,
+                    Role_ID = 1,
                     State = true
                 };
 

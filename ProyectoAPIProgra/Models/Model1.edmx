@@ -60,7 +60,7 @@
         </Association>
         <Function Name="IniciarSesion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Password" Type="varchar" Mode="In" />
-          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Username" Type="varchar" Mode="In" />
         </Function>
         <Function Name="RegistrarLog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MensajeError" Type="varchar" Mode="In" />
@@ -132,7 +132,7 @@
           </AssociationSet>
           <FunctionImport Name="IniciarSesion" ReturnType="Collection(ProyectoPrograAvanzadaModel.IniciarSesion_Result)">
             <Parameter Name="Password" Mode="In" Type="String" />
-            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Username" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RegistrarUsuario">
             <Parameter Name="CorreoElectronico" Mode="In" Type="String" />
