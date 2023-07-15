@@ -6,11 +6,16 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Net.Http;
+using System.Net.Mail;
 
 namespace ProyectoAPIProgra.Controllers
 {
     public class UserController : ApiController
     {
+        UtilitariosModel util = new UtilitariosModel();
+
+
         [HttpPost]
         [Route("api/IniciarSesion")]
        
@@ -64,7 +69,35 @@ namespace ProyectoAPIProgra.Controllers
             }
             //return bd.RegistrarUsuario(entidad.Email, entidad.Password, entidad.Name); 
         }
+
+        [HttpPost]
+        [Route("api/RecuperarContrasenna")]
+        public bool RecuperarContrasenna(UserEnt entidad)
+        {
+            using (var bd = new ProyectoPrograAvanzadaEntities())
+            {
+                var datos = (from x in bd.users
+                             where x.Email == entidad.Email
+                                && x.State == true
+                             select x).FirstOrDefault();
+
+                if (datos != null)
+                {
+                    string password = util.CreatePassword();
+                    datos.Password = util.Encrypt(password);
+                  
+                    bd.SaveChanges();
+
+                    string mensaje = "Hello " + datos.Name + ". a new password has been generated, please store it somewhere since you are NOT be able to change this password again, unless you recover it again. Password: " + password;
+                    util.SendEmail(datos.Email, "Recuperar Contraseña", mensaje);
+                    return true;
+                }
+
+                return false;
+            }
         }
-        }
+
+    }
+}
 
     
