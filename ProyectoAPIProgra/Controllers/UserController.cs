@@ -85,7 +85,6 @@ namespace ProyectoAPIProgra.Controllers
                 {
                     string password = util.CreatePassword();
                     datos.Password = util.Encrypt(password);
-                  
                     bd.SaveChanges();
 
                     string mensaje = "Hello " + datos.Name + ". a new password has been generated, please store it somewhere since you are NOT be able to change this password again, unless you recover it again. Password: " + password;
